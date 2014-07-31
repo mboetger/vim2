@@ -7,3 +7,4 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 
 syntax on
+colorscheme murphy
