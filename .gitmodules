@@ -10,3 +10,6 @@
 [submodule "bundle/vim-jekyll"]
 	path = bundle/vim-jekyll
 	url = http://github.com/itspriddle/vim-jekyll.git
+[submodule "bundle/vim-easymotion"]
+	path = bundle/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
