@@ -25,3 +25,6 @@
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
+[submodule "bundle/node"]
+	path = bundle/node
+	url = http://github.com/moll/vim-node.git
