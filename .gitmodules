@@ -28,3 +28,6 @@
 [submodule "bundle/node"]
 	path = bundle/node
 	url = http://github.com/moll/vim-node.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = http://github.com/godlygeek/tabular.git
