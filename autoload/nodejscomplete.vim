@@ -4,8 +4,8 @@
 " Last Change:	2012-8-18 1:32:00
 
 " save current dir
-let s:nodejs_doc_file = expand('<sfile>:p:h') . '/nodejs-doc.vim'
 
+let s:nodejs_doc_file = expand('<sfile>:p:h') . '/nodejs-doc.vim'
 let s:js_varname_reg = '[$a-zA-Z_][$a-zA-Z0-9_]*'
 
 let s:js_obj_declare_type = {
@@ -18,7 +18,7 @@ let s:js_obj_declare_type = {
 " default setting
 let s:nodejs_complete_config = {
   \  'js_compl_fn': 'javascriptcomplete#CompleteJS',
-  \  'max_node_compl_len': 15
+  \  'max_node_compl_len': 0
   \}
 if exists('g:nodejs_complete_config') && type(g:nodejs_complete_config) == type({})
   let g:nodejs_complete_config = extend(s:nodejs_complete_config, g:nodejs_complete_config)
@@ -26,6 +26,7 @@ else
   let g:nodejs_complete_config = s:nodejs_complete_config
 endif
 unlet s:nodejs_complete_config
+
 
 function! nodejscomplete#CompleteJS(findstart, base)"{{{
   if a:findstart
@@ -100,6 +101,10 @@ function! s:getNodeComplete(base, context)"{{{
 
     let compl_list = s:getObjectComplete(declare_info.type, declare_info.value,
                                         \ a:base, operator)
+    "echom string(compl_list)
+    if len(compl_list) < 1
+       let compl_list = s:localDataForModuleName(declare_info.value)
+    endif
 
     let ret = {
       \ 'complete': compl_list
@@ -226,6 +231,7 @@ endfunction"}}}
 
 " only complete nodejs's module info
 function! s:getObjectComplete(type, mod_name, prop_name, operator)"{{{
+    "echom 'getObjectComplete(type: ' . a:type . ', mod_name: ' . a:mod_name . ', prop_name: ' . a:prop_name . ', operator: ' .a:operator . ')'
   " new
   if a:type == s:js_obj_declare_type.constructor
     let list = s:getConstructedObjectComplete(a:mod_name)
@@ -595,7 +601,35 @@ function! s:smartFilter(items, str, keyword)"{{{
   return exact_ret + fuzzy_ret
 endfunction"}}}
 
-"
+" ====== Local Node data retrieval ======
+function! s:localDataForModuleName(moduleName)"{{{
+    let name = a:moduleName
+    if (name =~ 'node_modules')
+        let name = strpart(name, match(name, 'node_modules'))
+    endif
+    
+    let data = []
+    if (has_key(b:node_local, 'modules'))
+        for module in b:node_local.modules
+            "echom 'module data name: ' . module.name . ', module name: ' . name
+            if (module.name == name)
+                return module.data
+                break
+            elseif (has_key(module, 'main') && module.main == name)
+                return module.data
+            endif
+        endfor
+    endif
+
+    
+
+    return data
+endfunction"}}}
+
+
+
+
+
 " use plugin Decho(https://github.com/vim-scripts/Decho) for debug
 "
 " turn off debug mode
