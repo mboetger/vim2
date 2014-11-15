@@ -37,3 +37,6 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = git://github.com/msanders/snipmate.vim.git
+[submodule "bundle/bundle/vim-gradle"]
+	path = bundle/bundle/vim-gradle
+	url = https://github.com/tfnico/vim-gradle.git
