@@ -33,3 +33,5 @@ filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 source ~/.vim/computer-specific.vim
+
+au BufNewFile,BufRead *.gradle setf groovy
