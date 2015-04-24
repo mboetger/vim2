@@ -1,3 +1,5 @@
+set nocompatible
+
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -28,10 +30,11 @@ set number
 
 nmap <F8> :TagbarToggle<CR>
 
-filetype indent plugin on
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 source ~/.vim/computer-specific.vim
 
 au BufNewFile,BufRead *.gradle setf groovy
+
+filetype indent plugin on
