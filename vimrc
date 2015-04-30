@@ -19,14 +19,12 @@ ab #i #include
 ab #b /********************************************************
 ab #e ********************************************************/
 ab #l /*------------------------------------------------------*/
-set sw=4
 set notextmode
 set notextauto
 set hlsearch
 set incsearch
 set textwidth=70
 set number
-
 
 nmap <F8> :TagbarToggle<CR>
 
@@ -36,5 +34,3 @@ set omnifunc=syntaxcomplete#Complete
 source ~/.vim/computer-specific.vim
 
 au BufNewFile,BufRead *.gradle setf groovy
-
-filetype indent plugin on
