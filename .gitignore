@@ -2,3 +2,5 @@ computer-specific.vim
 
 eclim/
 plugin/eclim.vim
+
+cache/
