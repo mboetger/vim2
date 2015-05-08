@@ -52,3 +52,6 @@
 [submodule "bundle/youcompleteme"]
 	path = bundle/youcompleteme
 	url = https://github.com/valloric/youcompleteme.git
+[submodule "bundle/jcommenter"]
+	path = bundle/jcommenter
+	url = https://github.com/vim-scripts/jcommenter.vim

@@ -34,3 +34,5 @@ set omnifunc=syntaxcomplete#Complete
 source ~/.vim/computer-specific.vim
 
 au BufNewFile,BufRead *.gradle setf groovy
+
+let g:UltiSnipsExpandTrigger='<C-c>'
