@@ -47,22 +47,23 @@ endif
 let g:bookmark_no_default_key_mappings = 1
 function! BookmarkMapKeys()
   nmap <leader>mm :BookmarkToggle<CR>
-  nmap <leader>mmi :BookmarkAnnotate<CR>
-  nmap <leader>mmn :BookmarkNext<CR>
-  nmap <leader>mmp :BookmarkPrev<CR>
-  nmap <leader>mma :BookmarkShowAll<CR>
-  nmap <leader>mmc :BookmarkClear<CR>
-  nmap <leader>mmx :BookmarkClearAll<CR>
+  nmap <leader>mi :BookmarkAnnotate<CR>
+  nmap <leader>mn :BookmarkNext<CR>
+  nmap <leader>mp :BookmarkPrev<CR>
+  nmap <leader>ma :BookmarkShowAll<CR>
+  nmap <leader>mc :BookmarkClear<CR>
+  nmap <leader>mx :BookmarkClearAll<CR>
 endfunction
 function! BookmarkUnmapKeys()
-  unmap <leader>mmm
-  unmap <leader>mmi
-  unmap <leader>mmn
-  unmap <leader>mmp
-  unmap <leader>mma
-  unmap <leader>mmc
-  unmap <leader>mmx
+  unmap <leader>mm
+  unmap <leader>mi
+  unmap <leader>mn
+  unmap <leader>mp
+  unmap <leader>ma
+  unmap <leader>mc
+  unmap <leader>mx
 endfunction
 
 autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
+let g:bookmark_manage_per_buffer = 1
