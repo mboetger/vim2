@@ -43,3 +43,26 @@ if bufwinnr(1)
   map = <C-W>+
   map - <C-W>-
 endif
+
+let g:bookmark_no_default_key_mappings = 1
+function! BookmarkMapKeys()
+  nmap <leader>mm :BookmarkToggle<CR>
+  nmap <leader>mmi :BookmarkAnnotate<CR>
+  nmap <leader>mmn :BookmarkNext<CR>
+  nmap <leader>mmp :BookmarkPrev<CR>
+  nmap <leader>mma :BookmarkShowAll<CR>
+  nmap <leader>mmc :BookmarkClear<CR>
+  nmap <leader>mmx :BookmarkClearAll<CR>
+endfunction
+function! BookmarkUnmapKeys()
+  unmap <leader>mmm
+  unmap <leader>mmi
+  unmap <leader>mmn
+  unmap <leader>mmp
+  unmap <leader>mma
+  unmap <leader>mmc
+  unmap <leader>mmx
+endfunction
+
+autocmd BufEnter * :call BookmarkMapKeys()
+autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
