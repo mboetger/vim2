@@ -61,3 +61,6 @@
 [submodule "bundle/jsdoc"]
 	path = bundle/jsdoc
 	url = https://github.com/heavenshell/vim-jsdoc.git
+[submodule "bundle/bundle/vim-bookmarks"]
+	path = bundle/bundle/vim-bookmarks
+	url = https://github.com/MattesGroeger/vim-bookmarks.git
