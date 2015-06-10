@@ -35,3 +35,11 @@ source ~/.vim/computer-specific.vim
 
 au BufNewFile,BufRead *.gradle setf groovy
 
+map <F5> :execute "grep! -R " . expand("<cword>") . " ." <BAR> cw<CR>
+map <F6> :exectue "grep! -R " . expand("'<,'>") . " >"  <BAR> cw<CR>
+
+if bufwinnr(1)
+  map + <C-W>+
+  map = <C-W>+
+  map - <C-W>-
+endif
