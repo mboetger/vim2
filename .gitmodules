@@ -61,3 +61,6 @@
 [submodule "bundle/vim-bookmarks"]
 	path = bundle/vim-bookmarks
 	url = https://github.com/MattesGroeger/vim-bookmarks.git
+[submodule "bundle/vim-notes"]
+	path = bundle/vim-notes
+	url = https://github.com/xolox/vim-notes.git

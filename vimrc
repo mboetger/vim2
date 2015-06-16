@@ -45,25 +45,39 @@ if bufwinnr(1)
 endif
 
 let g:bookmark_no_default_key_mappings = 1
-function! BookmarkMapKeys()
-  nmap <leader>mm :BookmarkToggle<CR>
-  nmap <leader>mi :BookmarkAnnotate<CR>
-  nmap <leader>mn :BookmarkNext<CR>
-  nmap <leader>mp :BookmarkPrev<CR>
-  nmap <leader>ma :BookmarkShowAll<CR>
-  nmap <leader>mc :BookmarkClear<CR>
-  nmap <leader>mx :BookmarkClearAll<CR>
-endfunction
-function! BookmarkUnmapKeys()
-  unmap <leader>mm
-  unmap <leader>mi
-  unmap <leader>mn
-  unmap <leader>mp
-  unmap <leader>ma
-  unmap <leader>mc
-  unmap <leader>mx
+nmap <leader>mm :BookmarkToggle<CR>
+nmap <leader>mi :BookmarkAnnotate<CR>
+nmap <leader>mn :BookmarkNext<CR>
+nmap <leader>mp :BookmarkPrev<CR>
+nmap <leader>ma :BookmarkShowAll<CR>
+nmap <leader>mc :BookmarkClear<CR>
+nmap <leader>mx :BookmarkClearAll<CR>
+
+let g:tern_map_keys=1
+
+set statusline=%{fugitive#statusline()}
+
+let g:bookmark_manage_per_buffer = 0
+let g:bookmark_save_per_working_dir = 1
+
+function g:BMBufferFileLocation(file)
+  let git=fugitive#head()
+  if len(git) ==# 0
+    let git='misc'
+  endif
+  let loc='/usr/local/google/home/boetger/bookmarks/' . git . a:file
+  let cmd = 'mkdir -p ' . fnamemodify(loc, ':p:h') . '> /dev/null 2>&1'
+  call system(cmd)
+  return loc
 endfunction
 
-autocmd BufEnter * :call BookmarkMapKeys()
-autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
-let g:bookmark_manage_per_buffer = 1
+function g:BMWorkDirFileLocation()
+  let git=fugitive#head()
+  if len(git) ==# 0
+    let git='misc'
+  endif
+  let loc='/usr/local/google/home/boetger/bookmarks/' . git . '/'
+  let cmd = 'mkdir -p ' . loc . '> /dev/null 2>&1'
+  call system(cmd)
+  return loc . 'bookmarks'
+endfunction
