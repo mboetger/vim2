@@ -53,8 +53,6 @@ nmap <leader>ma :BookmarkShowAll<CR>
 nmap <leader>mc :BookmarkClear<CR>
 nmap <leader>mx :BookmarkClearAll<CR>
 
-let g:tern_map_keys=1
-
 set statusline=%f\ -\ FileType:\ %y\ -\ Branch:\ %{fugitive#statusline()}\ -\ Row:\ %-4l/%-4L\ -\ Col:\ %-4v 
 
 
