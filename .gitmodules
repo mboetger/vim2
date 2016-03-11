@@ -64,3 +64,9 @@
 [submodule "bundle/vim-misc"]
 	path = bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
+[submodule "bundle/vim-lldb"]
+	path = bundle/vim-lldb
+	url = https://github.com/mboetger/vim-lldb.git
+[submodule "bundle/vimproc"]
+	path = bundle/vimproc
+	url = http://github.com/Shougo/vimproc.git

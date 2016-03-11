@@ -55,4 +55,4 @@ nmap <leader>mx :BookmarkClearAll<CR>
 
 set statusline=%f\ -\ FileType:\ %y\ -\ Branch:\ %{fugitive#statusline()}\ -\ Row:\ %-4l/%-4L\ -\ Col:\ %-4v 
 
-
+set relativenumber
