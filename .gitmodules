@@ -73,3 +73,6 @@
 [submodule "bundle/vim-vebugger"]
 	path = bundle/vim-vebugger
 	url = https://github.com/idanarye/vim-vebugger
+[submodule "bundle/typescript-vim"]
+	path = bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim
