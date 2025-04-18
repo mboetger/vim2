@@ -73,3 +73,9 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git
+[submodule "bundle/bundle/vim-autoformat"]
+	path = bundle/bundle/vim-autoformat
+	url = https://github.com/vim-autoformat/vim-autoformat
+[submodule "bundle/vim-autoformat"]
+	path = bundle/vim-autoformat
+	url = https://github.com/vim-autoformat/vim-autoformat

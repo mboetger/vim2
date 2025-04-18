@@ -25,6 +25,9 @@ set hlsearch
 set incsearch
 set textwidth=70
 set number
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 nmap <F8> :TagbarToggle<CR>
 
