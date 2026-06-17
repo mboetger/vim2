@@ -8,7 +8,6 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 syntax on
-
 autocmd FileType *      set formatoptions=tcql nocindent comments&
 autocmd FileType c,cpp  set formatoptions=croql cindent comments=sr:/*,mb:*,ex:*/,://
 
@@ -31,15 +30,12 @@ set expandtab
 
 nmap <F8> :TagbarToggle<CR>
 
-filetype plugin on
+filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
 source ~/.vim/computer-specific.vim
 
 au BufNewFile,BufRead *.gradle setf groovy
-
-map <F5> :execute "grep! -R " . expand("<cword>") . " ." <BAR> cw<CR>
-map <F6> :exectue "grep! -R " . expand("'<,'>") . " >"  <BAR> cw<CR>
 
 if bufwinnr(1)
   map + <C-W>+
@@ -59,3 +55,19 @@ nmap <leader>mx :BookmarkClearAll<CR>
 set statusline=%f\ -\ FileType:\ %y\ -\ Branch:\ %{fugitive#statusline()}\ -\ Row:\ %-4l/%-4L\ -\ Col:\ %-4v 
 
 set relativenumber
+
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number '.shellescape(<q-args>), 0,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--no-hscroll'},'up:60%')
+  \           : fzf#vim#with_preview({'options': '--no-hscroll'},'right:50%'),
+  \   <bang>0)
+
+function! HeaderToggle()
+  let filename = expand("%:t")
+  if filename =~ ".cc"
+    execute "e %:r.h"
+  else
+    execute "e %:r.cc"
+  endif
+endfunction
